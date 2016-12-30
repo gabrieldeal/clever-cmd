@@ -99,6 +99,11 @@ Used by `clever-cmd-grep-wrapper'.")
 			    "file-name-regexp"
 			    (lambda (regexp) (string-match-p regexp file-name))))
 
+(defun clever-cmd--default-grep-command()
+  (unless grep-command
+    (grep-compute-defaults))
+  grep-command)
+
 (defun clever-cmd--default-command(command-type default)
   (let ((command (or (and buffer-file-name
 			  (clever-cmd--find-command-from-file-name-regexp-alist command-type buffer-file-name))
@@ -151,7 +156,7 @@ command. Then prompts the user for an override command.
 
 Install it like this:
 \(advice-add 'grep :around #'clever-cmd-grep-wrapper)"
-  (interactive (list (clever-cmd--read-shell-command grep-command 'grep-history "grep")))
+  (interactive (list (clever-cmd--read-shell-command (clever-cmd--default-grep-command) 'grep-history "grep")))
   (apply orig-fun args))
 
 (provide 'clever-cmd)
