@@ -109,9 +109,9 @@ Used by `clever-cmd-grep-wrapper'.")
 			  (clever-cmd--find-command-from-file-name-regexp-alist command-type buffer-file-name))
 		     (clever-cmd--find-command-from-major-mode-alist command-type major-mode)
 		     default)))
-    (if (stringp command)
-	command
-      (funcall command))))
+    (cond ((stringp command) command)
+	  ((functionp command) (funcall command))
+	  (t default))))
 
 (defun clever-cmd--replace-placeholders(command-template)
   (let ((filename (if (buffer-file-name) (buffer-file-name) ""))
