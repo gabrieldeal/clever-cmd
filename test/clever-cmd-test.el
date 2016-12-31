@@ -28,6 +28,12 @@
     (should (equal (clever-cmd--replace-placeholders "%%%%s %%%%l %%%%%%%%%%%%l")
 		   "%%s %%l %%%%%%l"))))
 
+(ert-deftest default-command/grep/empty-alist ()
+  (let ((major-mode 'some-mode)
+	(clever-cmd-grep-major-mode-alist '((fake-mode . "The fake-mode command"))))
+    (should (equal (clever-cmd--default-command "grep" "The default command")
+		   "The default command"))))
+
 (ert-deftest default-command/grep/no-match ()
   (let ((major-mode 'some-mode))
     (should (equal (clever-cmd--default-command "grep" "The default command")
