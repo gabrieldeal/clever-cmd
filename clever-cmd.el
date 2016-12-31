@@ -105,8 +105,8 @@ Used by `clever-cmd-grep-wrapper'.")
   grep-command)
 
 (defun clever-cmd--default-command(command-type default)
-  (let ((command (or (and buffer-file-name
-			  (clever-cmd--find-command-from-file-name-regexp-alist command-type buffer-file-name))
+  (let ((command (or (and (buffer-file-name)
+			  (clever-cmd--find-command-from-file-name-regexp-alist command-type (buffer-file-name)))
 		     (clever-cmd--find-command-from-major-mode-alist command-type major-mode)
 		     default)))
     (cond ((stringp command) command)

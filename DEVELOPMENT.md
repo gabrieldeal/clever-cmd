@@ -1,3 +1,10 @@
+# Running tests
+
+```
+cd clever-cmd
+cask exec ert-runner
+```
+
 # Rebuilding the local package
 
 ```
