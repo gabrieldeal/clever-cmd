@@ -6,6 +6,9 @@
 
 ;;; Code:
 
+(when (require 'undercover nil t)
+  (undercover "*.el"))
+
 (load (expand-file-name "clever-cmd.el" default-directory))
 
 (require 'el-mock) ; https://www.emacswiki.org/emacs/EmacsLispMock
