@@ -31,6 +31,15 @@
     (should (equal (clever-cmd--replace-placeholders "%%%%s %%%%l %%%%%%%%%%%%l")
 		   "%%s %%l %%%%%%l"))))
 
+(ert-deftest clever-cmd--evenp ()
+  (should (not (clever-cmd--evenp -3)))
+  (should (clever-cmd--evenp -2))
+  (should (not (clever-cmd--evenp -1)))
+  (should (clever-cmd--evenp 0))
+  (should (not (clever-cmd--evenp 1)))
+  (should (clever-cmd--evenp 2))
+  (should (not (clever-cmd--evenp 3))))
+
 (ert-deftest default-command/grep/empty-alist ()
   (let ((major-mode 'some-mode)
 	(clever-cmd-grep-major-mode-alist '((fake-mode . "The fake-mode command"))))
@@ -63,7 +72,7 @@
 
 (ert-deftest read-shell-command/grep/with-placeholder ()
   (let ((clever-cmd-grep-file-name-regexp-alist '(("super-file$" . "The super-file command")))
-	(history '("Command added by read-shell-command")))
+	(history '("Command added by read-shell-command" "x" "y")))
     (with-mock
       (stub buffer-file-name => "/tmp/super-file")
       (mock (read-shell-command "Command: "
@@ -72,7 +81,7 @@
 	    => "The command from the user %s")
       (should (equal (clever-cmd--read-shell-command "grep -rn " 'history "grep")
 		     "The command from the user /tmp/super-file"))
-      (should (equal history '("The command from the user /tmp/super-file"))))))
+      (should (equal history '("The command from the user /tmp/super-file" "x" "y"))))))
 
 (provide 'clever-cmd-test)
 ;;; clever-cmd-test.el ends here

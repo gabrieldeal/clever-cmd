@@ -4,6 +4,7 @@
 (package-file "clever-cmd.el")
 
 (development
+ (depends-on "elisp-lint")
  (depends-on "undercover")
  (depends-on "f")
  (depends-on "ecukes")
