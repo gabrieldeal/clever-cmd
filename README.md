@@ -1,5 +1,8 @@
 # clever-cmd.el
 
+[![Build Status](https://travis-ci.org/gabrielmdeal/clever-cmd.svg?branch=master)](https://travis-ci.org/gabrielmdeal/clever-cmd)
+[![Coverage Status](https://coveralls.io/repos/github/gabrielmdeal/clever-cmd/badge.svg?branch=master)](https://coveralls.io/github/gabrielmdeal/clever-cmd?branch=master)
+
 Emacs lisp package for customizing the default command used by `M-x
 grep` and `M-x compile` based on major mode or a filename regexp.
 Also replaces %s and %l with path and line number in the command.
