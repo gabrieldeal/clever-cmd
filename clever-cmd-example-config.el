@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2017 Gabriel M Deal
 ;; Author: Gabriel M Deal <gabriel.m.deal@gmail.com>
-;; Version: 0.0.1
-;; Package-Requires: ((clever-cmd "0.0.1"))
+;; Version: 0.0.2
+;; Package-Requires: ((clever-cmd "0.0.2") (emacs "24.4"))
 ;; Keywords: tools, unix, compilation-mode, grep
 ;; URL: https://github.com/gabrielmdeal/clever-cmd
 
