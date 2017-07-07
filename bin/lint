@@ -1,1 +1,10 @@
-cask exec emacs -Q --batch -l elisp-lint.el -f elisp-lint-files-batch --no-fill-column *.el
+#!/usr/bin/env sh
+
+cask exec emacs -Q \
+     --batch \
+     -l elisp-lint.el \
+     -f elisp-lint-files-batch \
+     --no-fill-column \
+     *.el
+
+exit $?
