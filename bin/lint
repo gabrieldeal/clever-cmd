@@ -1,7 +1,9 @@
 #!/usr/bin/env sh
 
+# Have to load clever-cmd.el so clever-cmd-example-config.el can require it.
 cask exec emacs -Q \
      --batch \
+     -l clever-cmd.el \
      -l elisp-lint.el \
      -f elisp-lint-files-batch \
      --no-fill-column \
