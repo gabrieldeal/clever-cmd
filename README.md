@@ -35,7 +35,8 @@ Then in your Emacs init file configure it to do something special for your speci
 (add-to-list 'clever-cmd-compile-major-mode-alist '(js-mode . "npm run test"))
 ```
 
-See [clever-cmd-example-config.el](clever-cmd-example-config.el) for more examples.
+See [clever-cmd-example-config.el](clever-cmd-example-config.el) for
+more examples.  Or `wget` the example config and `require` it in your config.
 
 # Using
 

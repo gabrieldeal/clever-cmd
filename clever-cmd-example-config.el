@@ -74,31 +74,46 @@
   (concat (clever-cmd-ec--cd-to-project-root-command) " && cask exec ert-runner && bin/lint"))
 
 ;;;###autoload
-(defun clever-cmd-example-config-initialize()
-  "Set up some clever configuration"
+(advice-add 'compile :around #'clever-cmd-compile-wrapper)
 
-  (advice-add 'compile :around #'clever-cmd-compile-wrapper)
-  (advice-add 'grep :around #'clever-cmd-grep-wrapper)
+;;;###autoload
+(advice-add 'grep :around #'clever-cmd-grep-wrapper)
 
-  (add-to-list 'clever-cmd-compile-major-mode-alist
-	       '(js-mode . clever-cmd-ec--javascript-compile-command))
-  (add-to-list 'clever-cmd-compile-major-mode-alist
-	       '(web-mode . clever-cmd-ec--javascript-compile-command))
+;;;###autoload
+(add-to-list 'clever-cmd-compile-major-mode-alist
+	     '(js-mode . clever-cmd-ec--javascript-compile-command))
 
-  (add-to-list 'clever-cmd-compile-file-name-regexp-alist
-	       '("/specs/.*\\.rb$\\|_spec.rb$" . clever-cmd-ec--rspec-compile-command))
-  (add-to-list 'clever-cmd-compile-file-name-regexp-alist
-	       '("\\<package\\.json$" . clever-cmd-ec--javascript-compile-command))
-  (add-to-list 'clever-cmd-grep-file-name-regexp-alist
-	       '("\\<package\\.json$" . clever-cmd-ec--javascript-grep-command))
-  (add-to-list 'clever-cmd-compile-file-name-regexp-alist
-	       '("/test/.*test.el$" . clever-cmd-ec--ert-runner-compile-command))
-  (add-to-list 'clever-cmd-grep-major-mode-alist
-	       '(web-mode . clever-cmd-ec--javascript-grep-command))
-  (add-to-list 'clever-cmd-grep-major-mode-alist
-	       '(js-mode . clever-cmd-ec--javascript-grep-command))
-  (add-to-list 'clever-cmd-grep-major-mode-alist
-	       '(ruby-mode . clever-cmd-ec--ruby-grep-command)))
+;;;###autoload
+(add-to-list 'clever-cmd-compile-major-mode-alist
+	     '(web-mode . clever-cmd-ec--javascript-compile-command))
+
+;;;###autoload
+(add-to-list 'clever-cmd-compile-file-name-regexp-alist
+	     '("/specs/.*\\.rb$\\|_spec.rb$" . clever-cmd-ec--rspec-compile-command))
+
+;;;###autoload
+(add-to-list 'clever-cmd-compile-file-name-regexp-alist
+	     '("\\<package\\.json$" . clever-cmd-ec--javascript-compile-command))
+
+;;;###autoload
+(add-to-list 'clever-cmd-grep-file-name-regexp-alist
+	     '("\\<package\\.json$" . clever-cmd-ec--javascript-grep-command))
+
+;;;###autoload
+(add-to-list 'clever-cmd-compile-file-name-regexp-alist
+	     '("/test/.*test.el$" . clever-cmd-ec--ert-runner-compile-command))
+
+;;;###autoload
+(add-to-list 'clever-cmd-grep-major-mode-alist
+	     '(web-mode . clever-cmd-ec--javascript-grep-command))
+
+;;;###autoload
+(add-to-list 'clever-cmd-grep-major-mode-alist
+	     '(js-mode . clever-cmd-ec--javascript-grep-command))
+
+;;;###autoload
+(add-to-list 'clever-cmd-grep-major-mode-alist
+	     '(ruby-mode . clever-cmd-ec--ruby-grep-command))
 
 (provide 'clever-cmd-example-config)
 ;;; clever-cmd-example-config.el ends here
