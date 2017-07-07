@@ -30,6 +30,7 @@
 
 ;;; Code:
 
+;;;###autoload
 (defvar clever-cmd-compile-file-name-regexp-alist
   '()
   "Alist containing a filename pattern and a function/string.
@@ -44,6 +45,7 @@ Example:
 	     '(\"\\\\<package\\\\.json$\" . \"npm run test\"))
 ")
 
+;;;###autoload
 (defvar clever-cmd-grep-file-name-regexp-alist
   '()
   "Alist containing a filename pattern and a function/string.
@@ -53,6 +55,7 @@ In the latter, the string is used as the grep command.
 
 Used by `clever-cmd-grep-wrapper'.")
 
+;;;###autoload
 (defvar clever-cmd-compile-major-mode-alist
   '()
   "Alist containing a filename pattern and a function/string.
@@ -62,6 +65,7 @@ In the latter, the string is used as the compile command.
 
 Used by `clever-cmd-compile-wrapper'.")
 
+;;;###autoload
 (defvar clever-cmd-grep-major-mode-alist
   '()
   "Alist containing a filename pattern and a function/string.
