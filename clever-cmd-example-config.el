@@ -104,6 +104,10 @@
 	     '("/test/.*test.el$" . clever-cmd-ec--ert-runner-compile-command))
 
 ;;;###autoload
+(add-to-list 'clever-cmd-grep-file-name-regexp-alist
+	     '(".*\\.erb$" . clever-cmd-ec--ruby-grep-command))
+
+;;;###autoload
 (add-to-list 'clever-cmd-grep-major-mode-alist
 	     '(web-mode . clever-cmd-ec--javascript-grep-command))
 
