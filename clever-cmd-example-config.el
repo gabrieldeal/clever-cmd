@@ -73,6 +73,10 @@
 (defun clever-cmd-ec--ert-runner-compile-command()
   (concat (clever-cmd-ec--cd-to-project-root-command) " && cask exec ert-runner && bin/lint"))
 
+(defun clever-cmd-ec--perl-grep-command()
+  (format "grep -nr --include=\"*.pl\" --include=\"*.pm\" %s --regexp "
+	  default-directory))
+
 ;;;###autoload
 (advice-add 'compile :around #'clever-cmd-compile-wrapper)
 
@@ -118,6 +122,10 @@
 ;;;###autoload
 (add-to-list 'clever-cmd-grep-major-mode-alist
 	     '(ruby-mode . clever-cmd-ec--ruby-grep-command))
+
+;;;###autoload
+(add-to-list 'clever-cmd-grep-major-mode-alist
+	     '(perl-mode . clever-cmd-ec--perl-grep-command))
 
 (provide 'clever-cmd-example-config)
 ;;; clever-cmd-example-config.el ends here
