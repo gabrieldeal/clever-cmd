@@ -66,6 +66,10 @@
   (concat (clever-cmd-ec--cd-to-project-root-command)
 	  " && bundle exec rspec  ~/.rspec_color.rb --format documentation %s:%l"))
 
+(defun clever-cmd-ec--rubocop-compile-command()
+  (concat (clever-cmd-ec--cd-to-project-root-command)
+	  " && bundle exec rubocop"))
+
 (defun clever-cmd-ec--javascript-compile-command()
   (concat (clever-cmd-ec--cd-to-project-root-command)
 	  " && yarn run test:watch # eslint:all"))
@@ -94,6 +98,11 @@
 ;;;###autoload
 (add-to-list 'clever-cmd-compile-file-name-regexp-alist
 	     '("/specs/.*\\.rb$\\|_spec.rb$" . clever-cmd-ec--rspec-compile-command))
+
+;;;###autoload
+(add-to-list 'clever-cmd-compile-file-name-regexp-alist
+	     '("\\.rb$" . clever-cmd-ec--rubocop-compile-command)
+	     't) ;; Append this so it comes after the rspec rule.
 
 ;;;###autoload
 (add-to-list 'clever-cmd-compile-file-name-regexp-alist
