@@ -72,6 +72,10 @@
 
 (defun clever-cmd-ec--javascript-compile-command()
   (concat (clever-cmd-ec--cd-to-project-root-command)
+	  " && yarn run eslint:all # test:watch"))
+
+(defun clever-cmd-ec--javascript-spec-compile-command()
+  (concat (clever-cmd-ec--cd-to-project-root-command)
 	  " && yarn run test:watch # eslint:all"))
 
 (defun clever-cmd-ec--ert-runner-compile-command()
@@ -88,12 +92,12 @@
 (advice-add 'grep :around #'clever-cmd-grep-wrapper)
 
 ;;;###autoload
-(add-to-list 'clever-cmd-compile-major-mode-alist
-	     '(js-mode . clever-cmd-ec--javascript-compile-command))
+(add-to-list 'clever-cmd-compile-file-name-regexp-alist
+	     '("Spec\\.\\(jsx\\|js\\|es6\\)$" . clever-cmd-ec--javascript-spec-compile-command))
 
 ;;;###autoload
-(add-to-list 'clever-cmd-compile-major-mode-alist
-	     '(web-mode . clever-cmd-ec--javascript-compile-command))
+(add-to-list 'clever-cmd-compile-file-name-regexp-alist
+	     '("\\.\\(jsx\\|js\\|es6\\)$" . clever-cmd-ec--javascript-compile-command))
 
 ;;;###autoload
 (add-to-list 'clever-cmd-compile-file-name-regexp-alist
