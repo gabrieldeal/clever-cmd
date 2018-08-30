@@ -59,7 +59,7 @@
 	  default-directory))
 
 (defun clever-cmd-ec--javascript-grep-command()
-  (format "grep -nr --exclude-dir generated --exclude-dir node_modules --include=\"*.js\" --include=\"*.jsx\" --include=\"*.es6\" %s --regexp "
+  (format "grep -nr --exclude-dir generated --exclude-dir .cache --exclude-dir public --exclude-dir node_modules --include=\"*.graphql\" --include=\"*.js\" --include=\"*.jsx\" --include=\"*.es6\" %s --regexp "
 	  default-directory))
 
 (defun clever-cmd-ec--rspec-compile-command()
