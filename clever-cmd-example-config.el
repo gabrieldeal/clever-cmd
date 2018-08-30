@@ -130,6 +130,10 @@
 
 ;;;###autoload
 (add-to-list 'clever-cmd-grep-major-mode-alist
+	     '(rjsx-mode . clever-cmd-ec--javascript-grep-command))
+
+;;;###autoload
+(add-to-list 'clever-cmd-grep-major-mode-alist
 	     '(ruby-mode . clever-cmd-ec--ruby-grep-command))
 
 ;;;###autoload
