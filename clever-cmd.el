@@ -41,9 +41,7 @@ command.  In the latter, the string is used as the compile command.
 Used by `clever-cmd-compile-wrapper'.
 
 Example:
-\(add-to-list 'clever-cmd-grep-file-name-regexp-alist
-	     '(\"\\\\<package\\\\.json$\" . \"npm run test\"))
-")
+\(add-to-list 'clever-cmd-grep-file-name-regexp-alist '(\"\\\\<package\\\\.json$\" . \"npm run test\"))")
 
 ;;;###autoload
 (defvar clever-cmd-grep-file-name-regexp-alist
