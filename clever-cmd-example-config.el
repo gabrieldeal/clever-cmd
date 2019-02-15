@@ -55,11 +55,11 @@
     str))
 
 (defun clever-cmd-ec--ruby-grep-command()
-  (format "grep -nr --include=\"*.rb\" --include=\"*.erb\" --include=\"*.rake\" %s --regexp "
+  (format "cd %s && grep -nr --include=\"*.rb\" --include=\"*.erb\" --include=\"*.rake\" . --regexp "
 	  default-directory))
 
 (defun clever-cmd-ec--javascript-grep-command()
-  (format "grep -nr --exclude-dir generated --exclude-dir .cache --exclude-dir public --exclude-dir node_modules --include=\"*.graphql\" --include=\"*.js\" --include=\"*.jsx\" --include=\"*.es6\" %s --regexp "
+  (format "cd %s && grep -nr --exclude-dir generated --exclude-dir .cache --exclude-dir public --exclude-dir node_modules --include=\"*.graphql\" --include=\"*.js\" --include=\"*.jsx\" --include=\"*.es6\" . --regexp "
 	  default-directory))
 
 (defun clever-cmd-ec--rspec-compile-command()
