@@ -64,7 +64,7 @@
 
 (defun clever-cmd-ec--rspec-compile-command()
   (concat (clever-cmd-ec--cd-to-project-root-command)
-	  " && bundle exec rspec  ~/.rspec_color.rb --format documentation %s:%l"))
+	  " && SKIP_COVERAGE=true bundle exec rspec  ~/.rspec_color.rb --format documentation %s:%l"))
 
 (defun clever-cmd-ec--rubocop-compile-command()
   (concat (clever-cmd-ec--cd-to-project-root-command)
