@@ -55,16 +55,16 @@
     str))
 
 (defun clever-cmd-ec--ruby-grep-command()
-  (format "cd %s && grep -nr --include=\"*.rb\" --include=\"*.erb\" --include=\"*.rake\" . --regexp "
+  (format "cd %s && grep . -nr --include=\"*.\"{rb,erb,rake} -e "
 	  default-directory))
 
 (defun clever-cmd-ec--javascript-grep-command()
-  (format "cd %s && grep -nr --exclude-dir generated --exclude-dir .cache --exclude-dir public --exclude-dir node_modules --include=\"*.graphql\" --include=\"*.js\" --include=\"*.jsx\" --include=\"*.es6\" . --regexp "
+  (format "cd %s && grep . -nr --exclude-dir={generated,.cache,public,node_modules,dist} --include=\"*.\"{graphql,js,jsx} -e "
 	  default-directory))
 
 (defun clever-cmd-ec--rspec-compile-command()
   (concat (clever-cmd-ec--cd-to-project-root-command)
-	  " && SKIP_COVERAGE=true bundle exec rspec  ~/.rspec_color.rb --format documentation %s:%l"))
+	  " && SKIP_COVERAGE=1 bundle exec bin/rspec ~/.rspec_color.rb -f d %s:%l"))
 
 (defun clever-cmd-ec--rubocop-compile-command()
   (concat (clever-cmd-ec--cd-to-project-root-command)
