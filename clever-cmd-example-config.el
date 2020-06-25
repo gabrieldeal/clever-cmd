@@ -58,13 +58,17 @@
   (format "cd %s && grep . -nr --include=\"*.\"{rb,erb,rake} -e "
 	  default-directory))
 
+(defun clever-cmd-ec--graphql-grep-command()
+  (format "cd %s && grep . -nr --include=\"*.graphql\" -e "
+	  default-directory))
+
 (defun clever-cmd-ec--javascript-grep-command()
-  (format "cd %s && grep . -nr --exclude-dir={generated,.cache,public,node_modules,dist} --include=\"*.\"{graphql,js,jsx} -e "
+  (format "cd %s && grep . -nr --exclude-dir={generated,.cache,public,node_modules,dist} --include=\"*.\"{graphql,js,jsx,ts,tsx} -e "
 	  default-directory))
 
 (defun clever-cmd-ec--rspec-compile-command()
   (concat (clever-cmd-ec--cd-to-project-root-command)
-	  " && SKIP_COVERAGE=1 bundle exec bin/rspec ~/.rspec_color.rb -f d %s:%l"))
+	  " && SKIP_COVERAGE=1 bin/rspec ~/.rspec_color.rb -f d %s:%l"))
 
 (defun clever-cmd-ec--rubocop-compile-command()
   (concat (clever-cmd-ec--cd-to-project-root-command)
@@ -93,11 +97,11 @@
 
 ;;;###autoload
 (add-to-list 'clever-cmd-compile-file-name-regexp-alist
-	     '("Spec\\.\\(jsx\\|js\\|es6\\)$" . clever-cmd-ec--javascript-spec-compile-command))
+	     '("Spec\\.\\(jsx\\|js\\|es6\\|ts\\|tsx\\)$" . clever-cmd-ec--javascript-spec-compile-command))
 
 ;;;###autoload
 (add-to-list 'clever-cmd-compile-file-name-regexp-alist
-	     '("\\.\\(jsx\\|js\\|es6\\)$" . clever-cmd-ec--javascript-compile-command))
+	     '("\\.\\(jsx\\|js\\|es6\\|ts\\|tsx\\)$" . clever-cmd-ec--javascript-compile-command))
 
 ;;;###autoload
 (add-to-list 'clever-cmd-compile-file-name-regexp-alist
@@ -130,7 +134,15 @@
 
 ;;;###autoload
 (add-to-list 'clever-cmd-grep-major-mode-alist
+	     '(graphql-mode . clever-cmd-ec--graphql-grep-command))
+
+;;;###autoload
+(add-to-list 'clever-cmd-grep-major-mode-alist
 	     '(js-mode . clever-cmd-ec--javascript-grep-command))
+
+;;;###autoload
+(add-to-list 'clever-cmd-grep-major-mode-alist
+	     '(typescript-mode . clever-cmd-ec--javascript-grep-command))
 
 ;;;###autoload
 (add-to-list 'clever-cmd-grep-major-mode-alist
