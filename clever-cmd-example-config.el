@@ -59,7 +59,7 @@
 	  default-directory))
 
 (defun clever-cmd-ec--graphql-grep-command()
-  (format "cd %s && grep . -nr --include=\"*.graphql\" -e "
+  (format "cd %s && grep . -nr --include=\"*\"{.graphql,_spec.rb} -e "
 	  default-directory))
 
 (defun clever-cmd-ec--java-grep-command()
