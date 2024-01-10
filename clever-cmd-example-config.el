@@ -55,7 +55,7 @@
     str))
 
 (defun clever-cmd-ec--ruby-grep-command()
-  (format "cd %s && grep . -nr --include=\"*.\"{rb,erb,rake} -e "
+  (format "cd %s && grep . -nr --include=\"*.\"{rb,erb,rake,rbs} -e "
 	  default-directory))
 
 (defun clever-cmd-ec--graphql-grep-command()
