@@ -62,6 +62,10 @@
   (format "cd %s && grep . -nr --include=\"*.graphql\" -e "
 	  default-directory))
 
+(defun clever-cmd-ec--java-grep-command()
+  (format "cd %s && grep . -nr --include=\"*.java\" -e "
+	  default-directory))
+
 (defun clever-cmd-ec--javascript-grep-command()
   (format "cd %s && grep . -nr --exclude-dir={generated,.cache,public,node_modules,my-turborepo,dist} --include=\"*.\"{graphql,js,jsx,ts,tsx} -e "
 	  default-directory))
@@ -135,6 +139,10 @@
 ;;;###autoload
 (add-to-list 'clever-cmd-grep-major-mode-alist
 	     '(graphql-mode . clever-cmd-ec--graphql-grep-command))
+
+;;;###autoload
+(add-to-list 'clever-cmd-grep-major-mode-alist
+	     '(java-mode . clever-cmd-ec--java-grep-command))
 
 ;;;###autoload
 (add-to-list 'clever-cmd-grep-major-mode-alist
