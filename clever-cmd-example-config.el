@@ -63,7 +63,7 @@
 	  default-directory))
 
 (defun clever-cmd-ec--javascript-grep-command()
-  (format "cd %s && grep . -nr --exclude-dir={generated,.cache,public,node_modules,dist} --include=\"*.\"{graphql,js,jsx,ts,tsx} -e "
+  (format "cd %s && grep . -nr --exclude-dir={generated,.cache,public,node_modules,my-turborepo,dist} --include=\"*.\"{graphql,js,jsx,ts,tsx} -e "
 	  default-directory))
 
 (defun clever-cmd-ec--rspec-compile-command()
