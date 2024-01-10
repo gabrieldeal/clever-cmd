@@ -68,7 +68,7 @@
 
 (defun clever-cmd-ec--rspec-compile-command()
   (concat (clever-cmd-ec--cd-to-project-root-command)
-	  " && TZ=UTC bin/rspec ~/.rspec_color.rb -f d %s:%l"))
+	  " && TZ=UTC RUBY_DEBUG_NO_COLOR=true bin/rspec ~/.rspec_color.rb -f d %s:%l"))
 
 (defun clever-cmd-ec--rubocop-compile-command()
   (concat (clever-cmd-ec--cd-to-project-root-command)
